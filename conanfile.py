@@ -1,7 +1,7 @@
 from conans import ConanFile, CMake, tools
 
 
-class DictionaryConan(ConanFile):
+class DataStructuresConan(ConanFile):
     name = "DataStructures-201"
     version = "1.0.0"
     license = "GPL License"

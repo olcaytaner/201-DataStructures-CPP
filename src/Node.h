@@ -12,6 +12,9 @@ private:
     Node* next;
 public:
     Node(int data);
+    void setNext(Node* _next);
+    Node* getNext();
+    int getData();
 };
 
 

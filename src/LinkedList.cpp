@@ -65,4 +65,21 @@ int LinkedList::numberOfElements() {
 }
 
 LinkedList::~LinkedList() {
+    Node* tmp = head;
+    Node *next;
+    while (tmp != nullptr) {
+        next = tmp->getNext();
+        delete tmp;
+        tmp = next;
+    }
+}
+
+string LinkedList::to_string() {
+    Node* tmp = head;
+    string result;
+    while (tmp != nullptr) {
+        result += tmp->to_string() + " ";
+        tmp = tmp->getNext();
+    }
+    return result;
 }

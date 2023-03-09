@@ -21,6 +21,7 @@ public:
     Node* search(int value);
     Node* getNodeI(int i);
     int numberOfElements();
+    string to_string();
 };
 
 

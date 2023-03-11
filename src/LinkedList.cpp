@@ -20,8 +20,9 @@ void LinkedList::insertFirst(Node *newNode) {
 void LinkedList::insertLast(Node *newNode) {
     if (head == nullptr) {
         head = newNode;
+    } else {
+        tail->setNext(newNode);
     }
-    tail->setNext(newNode);
     tail = newNode;
 }
 

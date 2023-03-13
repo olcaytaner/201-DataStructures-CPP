@@ -3,5 +3,5 @@ project(DataStructures_CPP)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_library(DataStructures_CPP src/Node.cpp src/Node.h src/LinkedList.cpp src/LinkedList.h)
-add_executable(Test src/Node.cpp src/Node.h src/LinkedList.cpp src/LinkedList.h Test/LinkedListTest.cpp)
+add_library(DataStructures_CPP src/Node.cpp src/Node.h src/LinkedList.cpp src/LinkedList.h src/DoublyNode.cpp src/DoublyNode.h)
+add_executable(Test src/Node.cpp src/Node.h src/LinkedList.cpp src/LinkedList.h Test/LinkedListTest.cpp src/DoublyNode.cpp src/DoublyNode.h)

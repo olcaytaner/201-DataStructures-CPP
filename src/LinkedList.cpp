@@ -119,4 +119,5 @@ void LinkedList::deleteMiddle(Node *node) {
     Node* previous;
     previous = getPrevious(node);
     previous->setNext(node->getNext());
+    delete node;
 }

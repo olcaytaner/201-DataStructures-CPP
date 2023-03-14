@@ -9,7 +9,7 @@
 #include "Node.h"
 
 class LinkedList {
-private:
+protected:
     Node* head;
     Node* tail;
 public:

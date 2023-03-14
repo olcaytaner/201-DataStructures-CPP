@@ -47,3 +47,14 @@ void DoublyLinkedList::deleteMiddle(DoublyNode *node) {
     node->getPrevious()->setNext(node->getNext());
     delete node;
 }
+
+void DoublyLinkedList::deleteLast() {
+    Node *toBeDeleted = tail;
+    tail = ((DoublyNode*)tail)->getPrevious();
+    if (tail != nullptr){
+        tail->setNext(nullptr);
+    } else {
+        head = nullptr;
+    }
+    delete toBeDeleted;
+}

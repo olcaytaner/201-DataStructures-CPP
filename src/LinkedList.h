@@ -21,9 +21,11 @@ public:
     Node* search(int value);
     Node* getNodeI(int i);
     int numberOfElements();
-    void deleteFirst();
+
+    virtual void deleteFirst();
     Node* getPrevious(Node* node);
-    void deleteLast();
+
+    virtual void deleteLast();
     void deleteMiddle(Node* node);
     string to_string();
 };

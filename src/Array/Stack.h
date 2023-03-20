@@ -8,6 +8,8 @@
 
 #include "Element.h"
 
+namespace array{
+
 class Stack {
 private:
     Element* array;
@@ -23,5 +25,6 @@ public:
     Element pop();
 };
 
+}
 
 #endif //DATASTRUCTURES_CPP_STACK_H

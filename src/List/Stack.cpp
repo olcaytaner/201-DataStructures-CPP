@@ -4,6 +4,8 @@
 
 #include "Stack.h"
 
+namespace list{
+
 Stack::Stack() {
     top = nullptr;
 }
@@ -25,4 +27,6 @@ Node* Stack::pop(){
     Node* topNode = top;
     top = top->getNext();
     return topNode;
+}
+
 }

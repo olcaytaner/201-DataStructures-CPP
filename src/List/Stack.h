@@ -8,6 +8,8 @@
 
 #include "Node.h"
 
+namespace list{
+
 class Stack {
 private:
     Node* top;
@@ -19,5 +21,6 @@ public:
     Node* pop();
 };
 
+}
 
 #endif //DATASTRUCTURES_CPP_STACK_H

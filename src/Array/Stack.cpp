@@ -4,6 +4,8 @@
 
 #include "Stack.h"
 
+namespace array{
+
 Stack::Stack(int N) {
     this->N = N;
     array = new Element[N];
@@ -39,4 +41,6 @@ Element Stack::pop() {
         return array[top + 1];
     }
     return Element(0);
+}
+
 }

@@ -121,3 +121,11 @@ void LinkedList::deleteMiddle(Node *node) {
     previous->setNext(node->getNext());
     delete node;
 }
+
+bool LinkedList::isEmpty() {
+    return head == nullptr;
+}
+
+Node *LinkedList::getHead() {
+    return head;
+}

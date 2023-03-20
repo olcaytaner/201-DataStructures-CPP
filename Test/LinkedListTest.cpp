@@ -4,8 +4,8 @@
 
 #define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
 #include "catch.hpp"
-#include "../src/LinkedList.h"
-#include "../src/DoublyLinkedList.h"
+#include "../src/List/LinkedList.h"
+#include "../src/List/DoublyLinkedList.h"
 
 TEST_CASE("LinkedListTest-1") {
     LinkedList list = LinkedList();

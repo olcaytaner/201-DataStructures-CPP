@@ -15,6 +15,8 @@ protected:
 public:
     LinkedList();
     ~LinkedList();
+    bool isEmpty();
+    Node* getHead();
     void insertFirst(Node* newNode);
     void insertLast(Node* newNode);
     void insertMiddle(Node* newNode, Node* previous);

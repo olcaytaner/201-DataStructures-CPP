@@ -1,0 +1,12 @@
+//
+// Created by Olcay Taner YILDIZ on 22.03.2023.
+//
+
+#ifndef DATASTRUCTURES_CPP_TOKENTYPE_H
+#define DATASTRUCTURES_CPP_TOKENTYPE_H
+
+enum TokenType{
+    OPERAND, OPERATOR
+};
+
+#endif //DATASTRUCTURES_CPP_TOKENTYPE_H

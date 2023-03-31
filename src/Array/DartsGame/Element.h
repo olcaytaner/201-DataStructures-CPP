@@ -5,18 +5,20 @@
 #ifndef DATASTRUCTURES_CPP_ELEMENT_H
 #define DATASTRUCTURES_CPP_ELEMENT_H
 
-namespace array {
 
-    class Element {
-    private:
-        int data;
-    public:
-        Element();
+#include "State.h"
 
-        explicit Element(int data);
+namespace darts{
 
-        int getData();
-    };
+class Element {
+private:
+    State data;
+public:
+    Element();
+    explicit Element(const State& data);
+    State getData();
+};
 
 }
+
 #endif //DATASTRUCTURES_CPP_ELEMENT_H

@@ -4,18 +4,15 @@
 
 #include "Element.h"
 
-namespace array {
-
-    Element::Element(int data) {
+namespace darts {
+    Element::Element(const State &data) {
         this->data = data;
     }
 
-    int Element::getData() {
+    State Element::getData() {
         return data;
     }
 
-    Element::Element() {
-
-    }
+    Element::Element() = default;
 
 }

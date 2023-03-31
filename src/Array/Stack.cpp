@@ -13,7 +13,7 @@ Stack::Stack(int N) {
 }
 
 Stack::~Stack() {
-    delete array;
+    delete[] array;
 }
 
 bool Stack::isFull() {

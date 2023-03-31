@@ -82,5 +82,20 @@ int evaluate(Element *postfixExpression, int size) {
 }
 
 int main() {
-
+    auto* postfix = new Element[5];
+    postfix[0] = Element(Token(3));
+    postfix[1] = Element(Token(4));
+    postfix[2] = Element(Token(7));
+    postfix[3] = Element(Token('*'));
+    postfix[4] = Element(Token('+'));
+    cout << evaluate(postfix, 5) << endl;
+    delete[] postfix;
+    auto* infix = new Element[5];
+    infix[0] = Element(Token(3));
+    infix[1] = Element(Token('+'));
+    infix[2] = Element(Token(4));
+    infix[3] = Element(Token('*'));
+    infix[4] = Element(Token(7));
+    infixToPostFix(infix, 5);
+    delete[] infix;
 }

@@ -14,7 +14,7 @@ namespace array {
     }
 
     Queue::~Queue() {
-        delete array;
+        delete[] array;
     }
 
     bool Queue::isFull() const {

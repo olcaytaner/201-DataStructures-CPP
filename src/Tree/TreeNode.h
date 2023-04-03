@@ -17,6 +17,12 @@ public:
     int getData() const;
     TreeNode* getLeft() const;
     TreeNode* getRight() const;
+    TreeNode* recursiveSearch(int value);
+    TreeNode* recursiveMinSearch();
+    TreeNode* recursiveMaxSearch();
+    void preorder();
+    void inorder();
+    void postorder();
 };
 
 

@@ -16,6 +16,15 @@ public:
     ~Tree();
     TreeNode* getRoot() const;
     void setRoot(TreeNode* _root);
+    TreeNode* recursiveSearch(int value);
+    TreeNode* iterativeSearch(int value);
+    TreeNode* iterativeMinSearch();
+    TreeNode* iterativeMaxSearch();
+    TreeNode* recursiveMinSearch();
+    TreeNode* recursiveMaxSearch();
+    void inorder();
+    void preorder();
+    void postorder();
 };
 
 

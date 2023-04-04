@@ -25,6 +25,8 @@ public:
     void inorder();
     void preorder();
     void postorder();
+    void iterativeInsert(TreeNode* node);
+    void prettyPrint();
 };
 
 

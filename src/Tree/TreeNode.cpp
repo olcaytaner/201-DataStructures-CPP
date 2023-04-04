@@ -5,6 +5,8 @@
 #include "TreeNode.h"
 #include <iostream>
 
+using namespace std;
+
 TreeNode::TreeNode(int data) {
     this->data = data;
     this->left = nullptr;
@@ -89,4 +91,25 @@ void TreeNode::postorder() {
         right->postorder();
     }
     std::cout << data;
+}
+
+void TreeNode::setLeft(TreeNode* _left) {
+    this->left = _left;
+}
+
+void TreeNode::setRight(TreeNode *_right) {
+    this->right = _right;
+}
+
+void TreeNode::prettyPrint(int level) {
+    for (int i = 0; i < level; i++){
+        cout << "\t";
+    }
+    cout << data << endl;
+    if (left != nullptr){
+        left->prettyPrint(level + 1);
+    }
+    if (right != nullptr){
+        right->prettyPrint(level + 1);
+    }
 }

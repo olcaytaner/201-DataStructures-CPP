@@ -96,3 +96,31 @@ void Tree::postorder() {
         root->postorder();
     }
 }
+
+void Tree::iterativeInsert(TreeNode *node) {
+    TreeNode *parent = nullptr;
+    TreeNode *tmp = root;
+    while (tmp != nullptr) {
+        parent = tmp;
+        if (node->getData() < tmp->getData()){
+            tmp = tmp->getLeft();
+        } else {
+            tmp = tmp->getRight();
+        }
+    }
+    if (parent == nullptr){
+        root = node;
+    } else {
+        if (node->getData() < parent->getData()){
+            parent->setLeft(node);
+        } else {
+            parent->setRight(node);
+        }
+    }
+}
+
+void Tree::prettyPrint() {
+    if (root != nullptr){
+        root->prettyPrint(0);
+    }
+}

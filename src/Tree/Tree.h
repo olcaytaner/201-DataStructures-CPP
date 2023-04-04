@@ -26,7 +26,10 @@ public:
     void preorder();
     void postorder();
     void iterativeInsert(TreeNode* node);
+    void recursiveInsert(TreeNode* node);
     void prettyPrint();
+    int nodeCountWithStack();
+    int nodeCountWithQueue();
 };
 
 

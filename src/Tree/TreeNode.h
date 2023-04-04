@@ -26,6 +26,7 @@ public:
     void inorder();
     void postorder();
     void prettyPrint(int level);
+    void recursiveInsert(TreeNode* node);
 };
 
 

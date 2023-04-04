@@ -3,6 +3,10 @@
 //
 
 #include "Tree.h"
+#include "Stack.h"
+#include "Queue.h"
+
+using namespace tree;
 
 Tree::Tree() {
     root = nullptr;
@@ -123,4 +127,54 @@ void Tree::prettyPrint() {
     if (root != nullptr){
         root->prettyPrint(0);
     }
+}
+
+void Tree::recursiveInsert(TreeNode *node) {
+    if (root == nullptr){
+        root = node;
+    } else {
+        root->recursiveInsert(node);
+    }
+}
+
+int Tree::nodeCountWithStack() {
+    TreeNode* tmp;
+    int count = 0;
+    Stack c = Stack(100);
+    if (root != nullptr){
+        c.push(Element(root));
+    }
+    while (!c.isEmpty()){
+        Element e = c.pop();
+        count++;
+        tmp = e.getData();
+        if (tmp->getLeft() != nullptr){
+            c.push( Element(tmp->getLeft()));
+        }
+        if (tmp->getRight() != nullptr){
+            c.push(Element(tmp->getRight()));
+        }
+    }
+    return count;
+}
+
+int Tree::nodeCountWithQueue() {
+    TreeNode* tmp;
+    int count = 0;
+    Queue c = Queue(100);
+    if (root != nullptr){
+        c.enqueue(Element(root));
+    }
+    while (!c.isEmpty()){
+        Element e = c.dequeue();
+        count++;
+        tmp = e.getData();
+        if (tmp->getLeft() != nullptr){
+            c.enqueue(Element(tmp->getLeft()));
+        }
+        if (tmp->getRight() != nullptr){
+            c.enqueue(Element(tmp->getRight()));
+        }
+    }
+    return count;
 }

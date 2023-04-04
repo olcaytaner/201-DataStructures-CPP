@@ -113,3 +113,19 @@ void TreeNode::prettyPrint(int level) {
         right->prettyPrint(level + 1);
     }
 }
+
+void TreeNode::recursiveInsert(TreeNode *node) {
+    if (node->getData() < data){
+        if (left != nullptr){
+            left->recursiveInsert(node);
+        } else {
+            left = node;
+        }
+    } else {
+        if (right != nullptr){
+            right->recursiveInsert(node);
+        } else {
+            right = node;
+        }
+    }
+}

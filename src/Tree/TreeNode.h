@@ -7,7 +7,7 @@
 
 
 class TreeNode {
-private:
+protected:
     TreeNode* left;
     TreeNode* right;
     int data;

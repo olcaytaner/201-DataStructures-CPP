@@ -9,7 +9,7 @@
 #include "TreeNode.h"
 
 class Tree {
-private:
+protected:
     TreeNode* root;
 public:
     Tree();

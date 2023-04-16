@@ -9,6 +9,8 @@ AvlTreeNode::AvlTreeNode(int data) : TreeNode(data) {
 }
 
 AvlTreeNode::~AvlTreeNode() {
+    delete left;
+    delete right;
 }
 
 int AvlTreeNode::getHeight() const {

@@ -11,6 +11,7 @@
 class Tree {
 protected:
     TreeNode* root;
+    void insertChild(TreeNode* parent, TreeNode* child);
 public:
     Tree();
     ~Tree();

@@ -112,15 +112,7 @@ void Tree::iterativeInsert(TreeNode *node) {
             tmp = tmp->getRight();
         }
     }
-    if (parent == nullptr){
-        root = node;
-    } else {
-        if (node->getData() < parent->getData()){
-            parent->setLeft(node);
-        } else {
-            parent->setRight(node);
-        }
-    }
+    insertChild(parent, node);
 }
 
 void Tree::prettyPrint() {
@@ -177,4 +169,16 @@ int Tree::nodeCountWithQueue() {
         }
     }
     return count;
+}
+
+void Tree::insertChild(TreeNode *parent, TreeNode *child) {
+    if (parent == nullptr) {
+        root = child;
+    } else {
+        if (child->getData() < parent->getData()) {
+            parent->setLeft(child);
+        } else {
+            parent->setRight(child);
+        }
+    }
 }

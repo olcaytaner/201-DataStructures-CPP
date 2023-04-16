@@ -12,6 +12,8 @@
 class AvlTree : public Tree{
 public:
     AvlTree();
+    ~AvlTree();
+    void insert(AvlTreeNode* node);
 private:
     int getHeight(AvlTreeNode* node);
     AvlTreeNode* rotateLeft(AvlTreeNode* k2);

@@ -30,6 +30,7 @@ public:
     virtual void deleteLast();
     void deleteMiddle(Node* node);
     string to_string();
+    void deleteValue(int value);
 };
 
 

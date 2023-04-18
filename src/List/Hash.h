@@ -1,26 +1,25 @@
 //
-// Created by Olcay Taner YILDIZ on 17.04.2023.
+// Created by Olcay Taner YILDIZ on 18.04.2023.
 //
 
 #ifndef DATASTRUCTURES_CPP_HASH_H
 #define DATASTRUCTURES_CPP_HASH_H
 
 
-#include "Element.h"
+#include "LinkedList.h"
 
-namespace array {
+namespace list {
 
     class Hash {
     private:
-        Element **table;
-        bool *deleted;
+        LinkedList *table;
         int N;
         int hashFunction(int value);
     public:
-        explicit Hash(int N);
-        ~Hash();
-        Element* search(int value);
+        Hash(int N);
+        Node* search(int value);
         void insert(int value);
+        void insert(Node* node);
         void deleteValue(int value);
     };
 

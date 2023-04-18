@@ -129,3 +129,26 @@ bool LinkedList::isEmpty() {
 Node *LinkedList::getHead() {
     return head;
 }
+
+void LinkedList::deleteValue(int value) {
+    Node *tmp = head;
+    Node *previous = nullptr;
+    while (tmp != nullptr) {
+        if (tmp->getData() == value){
+            if (previous != nullptr){
+                previous->setNext(tmp->getNext());
+                if (tmp->getNext() == nullptr){
+                    tail = previous;
+                }
+            } else {
+                head = tmp->getNext();
+                if (head == nullptr){
+                    tail = nullptr;
+                }
+            }
+            break;
+        }
+        previous = tmp;
+        tmp = tmp->getNext();
+    }
+}

@@ -9,13 +9,13 @@
 #include "HeapNode.h"
 
 class Heap {
-private:
+protected:
     HeapNode *array;
     int count;
     int N;
     void swapNode(int index1, int index2);
-    void percolateDown(int no);
-    void percolateUp(int no);
+    virtual void percolateDown(int no);
+    virtual void percolateUp(int no);
 public:
     explicit Heap(int N);
     ~Heap();

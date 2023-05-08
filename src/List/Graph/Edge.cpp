@@ -7,11 +7,11 @@
 Edge::Edge(int to, int weight) {
     this->to = to;
     this->weight = weight;
-    this->next = nullptr;
+    next = nullptr;
 }
 
 void Edge::setNext(Edge *_next) {
-    this->next = _next;
+    next = _next;
 }
 
 Edge *Edge::getNext() const{

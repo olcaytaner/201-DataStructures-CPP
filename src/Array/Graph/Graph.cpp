@@ -8,9 +8,9 @@ namespace array{
 
     Graph::Graph(int vertexCount) {
         this->vertexCount = vertexCount;
-        this->edges = new int*[vertexCount];
-        for (int i = 0; i < this->vertexCount; i++){
-            this->edges[i] = new int[vertexCount];
+        edges = new int*[vertexCount];
+        for (int i = 0; i < vertexCount; i++){
+            edges[i] = new int[vertexCount];
         }
         for (int i = 0; i < vertexCount; i++){
             for (int j = 0; j < vertexCount; j++){
@@ -20,10 +20,10 @@ namespace array{
     }
 
     Graph::~Graph() {
-        for (int i = 0; i < this->vertexCount; i++){
-            delete[] this->edges[i];
+        for (int i = 0; i < vertexCount; i++){
+            delete[] edges[i];
         }
-        delete[] this->edges;
+        delete[] edges;
     }
 
     void Graph::addEdge(int from, int to) {

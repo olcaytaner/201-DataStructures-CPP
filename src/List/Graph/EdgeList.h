@@ -14,9 +14,10 @@ private:
     Edge* tail;
 public:
     EdgeList();
+    ~EdgeList();
     bool isEmpty() const;
     Edge* search(int to) const;
-    void addEdge(Edge* newEdge);
+    void insert(Edge* newEdge);
 };
 
 

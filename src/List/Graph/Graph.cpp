@@ -16,12 +16,16 @@ namespace list {
 
     void Graph::addEdge(int from, int to) {
         Edge* edge = new Edge(to, 1);
-        edges[from].addEdge(edge);
+        edges[from].insert(edge);
     }
 
     void Graph::addEdge(int from, int to, int weight) {
         Edge* edge = new Edge(to, weight);
-        edges[from].addEdge(edge);
+        edges[from].insert(edge);
+    }
+
+    Graph::~Graph() {
+        delete[] edges;
     }
 
 }

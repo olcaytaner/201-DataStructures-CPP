@@ -9,6 +9,16 @@ EdgeList::EdgeList() {
     tail = nullptr;
 }
 
+EdgeList::~EdgeList() {
+    Edge *tmp = head;
+    Edge *next;
+    while (tmp != nullptr) {
+        next = tmp->getNext();
+        delete tmp;
+        tmp = next;
+    }
+}
+
 bool EdgeList::isEmpty() const {
     return head == nullptr;
 }
@@ -24,7 +34,7 @@ Edge *EdgeList::search(int to) const{
     return nullptr;
 }
 
-void EdgeList::addEdge(Edge *newEdge) {
+void EdgeList::insert(Edge *newEdge) {
     if (head == nullptr) {
         head = newEdge;
     } else {

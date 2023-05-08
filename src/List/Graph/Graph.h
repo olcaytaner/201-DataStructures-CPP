@@ -16,6 +16,7 @@ namespace list {
         int vertexCount;
     public:
         explicit Graph(int vertexCount);
+        ~Graph();
         void addEdge(int from, int to);
         void addEdge(int from, int to, int weight);
     };

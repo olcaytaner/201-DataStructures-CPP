@@ -14,6 +14,7 @@ private:
     int count;
 public:
     DisjointSet(int* elements, int count);
+    DisjointSet(int count);
     ~DisjointSet();
     int findSetRecursive(int index);
     int findSetIterative(int index);

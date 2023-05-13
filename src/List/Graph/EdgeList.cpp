@@ -42,3 +42,7 @@ void EdgeList::insert(Edge *newEdge) {
     }
     tail = newEdge;
 }
+
+Edge *EdgeList::getHead() {
+    return head;
+}

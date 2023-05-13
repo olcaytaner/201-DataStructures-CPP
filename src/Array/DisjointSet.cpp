@@ -46,3 +46,11 @@ void DisjointSet::unionOfSets(int index1, int index2) {
     }
 
 }
+
+DisjointSet::DisjointSet(int count) {
+    sets = new Set[count];
+    for (int i = 0; i < count; i++){
+        sets[i] = Set(i, i);
+    }
+    this->count = count;
+}

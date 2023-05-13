@@ -11,11 +11,16 @@ namespace array{
     private:
         int** edges;
         int vertexCount;
+        void depthFirstSearch(bool* visited, int fromNode);
+        void breadthFirstSearch(bool* visited, int startNode);
     public:
         Graph(int vertexCount);
         ~Graph();
         void addEdge(int from, int to);
         void addEdge(int from, int to, int weight);
+        void connectedComponentDisjointSet();
+        int connectedComponentDfs();
+        int connectedComponentBfs();
     };
 
 }

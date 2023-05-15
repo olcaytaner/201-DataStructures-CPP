@@ -81,3 +81,12 @@ void Heap::update(int k, int newValue) {
         percolateUp(k);
     }
 }
+
+int Heap::search(int name) {
+    for (int i = 0; i < count; i++){
+        if (array[i].getName() == name){
+            return i;
+        }
+    }
+    return -1;
+}

@@ -7,23 +7,23 @@
 
 
 #include "EdgeList.h"
+#include "../../General/AbstractGraph.h"
 
 namespace list {
 
-    class Graph {
+    class Graph : public AbstractGraph{
     private:
         EdgeList *edges;
-        int vertexCount;
-        void depthFirstSearch(bool* visited, int fromNode);
-        void breadthFirstSearch(bool* visited, int startNode);
+        void depthFirstSearch(bool* visited, int fromNode) override;
+        void breadthFirstSearch(bool* visited, int startNode) override;
     public:
         explicit Graph(int vertexCount);
         ~Graph();
         void addEdge(int from, int to);
         void addEdge(int from, int to, int weight);
         void connectedComponentsDisjointSet();
-        int connectedComponentDfs();
-        int connectedComponentBfs();
+        Path* bellmanFord(int source);
+        Path* dijkstra(int source);
     };
 
 }

@@ -24,6 +24,7 @@ public:
     HeapNode deleteMax();
     void insert(HeapNode node);
     void update(int k, int newValue);
+    int search(int name);
 };
 
 

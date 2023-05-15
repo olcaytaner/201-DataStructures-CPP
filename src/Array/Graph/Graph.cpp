@@ -5,11 +5,11 @@
 #include "Graph.h"
 #include "../DisjointSet.h"
 #include "../Queue.h"
+#include "../Heap.h"
 
 namespace array{
 
-    Graph::Graph(int vertexCount) {
-        this->vertexCount = vertexCount;
+    Graph::Graph(int vertexCount) : AbstractGraph(vertexCount){
         edges = new int*[vertexCount];
         for (int i = 0; i < vertexCount; i++){
             edges[i] = new int[vertexCount];
@@ -49,17 +49,6 @@ namespace array{
         }
     }
 
-    int Graph::connectedComponentDfs() {
-        int component = 0;
-        bool* visited = new bool[vertexCount];
-        for (int vertex = 0; vertex < vertexCount; vertex++){
-            visited[vertex] = true;
-            depthFirstSearch(visited, vertex);
-            component++;
-        }
-        return component;
-    }
-
     void Graph::depthFirstSearch(bool *visited, int fromNode) {
         for (int toNode = 0; toNode < vertexCount; toNode++){
             if (edges[fromNode][toNode] > 0){
@@ -69,17 +58,6 @@ namespace array{
                 }
             }
         }
-    }
-
-    int Graph::connectedComponentBfs() {
-        int component = 0;
-        bool* visited = new bool[vertexCount];
-        for (int vertex = 0; vertex < vertexCount; vertex++){
-            visited[vertex] = true;
-            breadthFirstSearch(visited, vertex);
-            component++;
-        }
-        return component;
     }
 
     void Graph::breadthFirstSearch(bool *visited, int startNode) {
@@ -97,6 +75,44 @@ namespace array{
                 }
             }
         }
+    }
+
+    Path *Graph::bellmanFord(int source) {
+        Path* shortestPaths = initializePaths(source);
+        for (int i = 0; i < vertexCount - 1; i++){
+            for (int fromNode = 0; fromNode < vertexCount; fromNode++){
+                for (int toNode = 0; toNode < vertexCount; toNode++){
+                    int newDistance = shortestPaths[fromNode].getDistance() + edges[fromNode][toNode];
+                    if (newDistance < shortestPaths[toNode].getDistance()){
+                        shortestPaths[toNode].setDistance(newDistance);
+                        shortestPaths[toNode].setPrevious(fromNode);
+                    }
+                }
+            }
+        }
+        return shortestPaths;
+    }
+
+    Path *Graph::dijkstra(int source) {
+        Path* shortestPaths = initializePaths(source);
+        Heap heap = Heap(vertexCount);
+        for (int i = 0; i < vertexCount; i++){
+            heap.insert( HeapNode(shortestPaths[i].getDistance(), i));
+        }
+        while (!heap.isEmpty()){
+            HeapNode node = heap.deleteMax();
+            int fromNode = node.getName();
+            for (int toNode = 0; toNode < vertexCount; toNode++){
+                int newDistance = shortestPaths[fromNode].getDistance() + edges[fromNode][toNode];
+                if (newDistance < shortestPaths[toNode].getDistance()){
+                    int position = heap.search(toNode);
+                    heap.update(position, newDistance);
+                    shortestPaths[toNode].setDistance(newDistance);
+                    shortestPaths[toNode].setPrevious(fromNode);
+                }
+            }
+        }
+        return shortestPaths;
     }
 
 }

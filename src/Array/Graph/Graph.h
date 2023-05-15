@@ -6,21 +6,23 @@
 #define DATASTRUCTURES_CPP_GRAPH_H
 
 
+#include "../../General/AbstractGraph.h"
+
 namespace array{
-    class Graph {
+    class Graph : public AbstractGraph{
     private:
         int** edges;
-        int vertexCount;
-        void depthFirstSearch(bool* visited, int fromNode);
-        void breadthFirstSearch(bool* visited, int startNode);
     public:
-        Graph(int vertexCount);
+        explicit Graph(int vertexCount);
         ~Graph();
         void addEdge(int from, int to);
         void addEdge(int from, int to, int weight);
         void connectedComponentDisjointSet();
-        int connectedComponentDfs();
-        int connectedComponentBfs();
+        Path* bellmanFord(int source);
+        Path* dijkstra(int source);
+    protected:
+        void depthFirstSearch(bool* visited, int fromNode) override;
+        void breadthFirstSearch(bool* visited, int startNode) override;
     };
 
 }

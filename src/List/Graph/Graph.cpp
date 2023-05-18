@@ -17,12 +17,12 @@ namespace list {
     }
 
     void Graph::addEdge(int from, int to) {
-        Edge* edge = new Edge(to, 1);
+        Edge* edge = new Edge(from, to, 1);
         edges[from].insert(edge);
     }
 
     void Graph::addEdge(int from, int to, int weight) {
-        Edge* edge = new Edge(to, weight);
+        Edge* edge = new Edge(from, to, weight);
         edges[from].insert(edge);
     }
 
@@ -123,6 +123,52 @@ namespace list {
             }
         }
         return shortestPaths;
+    }
+
+    Edge *Graph::edgeList(int& edgeCount) {
+        Edge* list;
+        edgeCount = 0;
+        for (int i = 0; i < vertexCount; i++){
+            Edge* edge = edges[i].getHead();
+            while (edge != nullptr){
+                edgeCount++;
+                edge = edge->getNext();
+            }
+        }
+        list = new Edge[edgeCount];
+        int index = 0;
+        for (int i = 0; i < vertexCount; i++){
+            Edge* edge = edges[i].getHead();
+            while (edge != nullptr){
+                list[index] = Edge(edge->getFrom(), edge->getTo(), edge->getWeight());
+                index++;
+                edge = edge->getNext();
+            }
+        }
+        return list;
+    }
+
+    void Graph::prim() {
+        Path* paths = initializePaths(0);
+        Heap heap = Heap(vertexCount);
+        for (int i = 0; i < vertexCount; i++){
+            heap.insert(HeapNode(paths[i].getDistance(), i));
+        }
+        while (!heap.isEmpty()){
+            HeapNode node = heap.deleteMax();
+            int fromNode = node.getName();
+            Edge* edge = edges[fromNode].getHead();
+            while (edge != nullptr){
+                int toNode = edge->getTo();
+                if (paths[toNode].getDistance() > edge->getWeight()){
+                    int position = heap.search(toNode);
+                    heap.update(position, edge->getWeight());
+                    paths[toNode].setDistance(edge->getWeight());
+                    paths[toNode].setPrevious(fromNode);
+                }
+                edge = edge->getNext();
+            }
+        }
     }
 
 }

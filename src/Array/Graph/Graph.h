@@ -7,6 +7,7 @@
 
 
 #include "../../General/AbstractGraph.h"
+#include "../../List/Graph/Edge.h"
 
 namespace array{
     class Graph : public AbstractGraph{
@@ -21,9 +22,11 @@ namespace array{
         Path* bellmanFord(int source);
         Path* dijkstra(int source);
         int** floydWarshall();
+        void prim();
     protected:
         void depthFirstSearch(bool* visited, int fromNode) override;
         void breadthFirstSearch(bool* visited, int startNode) override;
+        Edge* edgeList(int& edgeCount) override;
     };
 
 }

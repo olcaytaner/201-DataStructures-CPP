@@ -8,13 +8,16 @@
 
 class Edge {
 private:
+    int from;
     int to;
     int weight;
     Edge* next;
 public:
-    Edge(int to, int weight);
+    Edge();
+    Edge(int from, int to, int weight);
     void setNext(Edge* _next);
     Edge* getNext() const;
+    int getFrom() const;
     int getTo() const;
     int getWeight() const;
 };

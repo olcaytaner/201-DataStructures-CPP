@@ -7,17 +7,20 @@
 
 
 #include "Path.h"
+#include "../List/Graph/Edge.h"
 
 class AbstractGraph {
 protected:
     int vertexCount;
     virtual void depthFirstSearch(bool* visited, int fromNode) = 0;
     virtual void breadthFirstSearch(bool* visited, int startNode) = 0;
-    Path* initializePaths(int source);
+    virtual Edge* edgeList(int& edgeCount) = 0;
+    Path* initializePaths(int source) const;
 public:
-    AbstractGraph(int vertexCount);
+    explicit AbstractGraph(int vertexCount);
     int connectedComponentDfs();
     int connectedComponentBfs();
+    void kruskal();
 };
 
 

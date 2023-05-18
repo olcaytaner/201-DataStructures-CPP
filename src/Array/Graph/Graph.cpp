@@ -137,4 +137,47 @@ namespace array{
         return distances;
     }
 
+    Edge *Graph::edgeList(int &edgeCount) {
+        Edge* list;
+        edgeCount = 0;
+        for (int i = 0; i < vertexCount; i++){
+            for (int j = 0; j < vertexCount; j++){
+                if (edges[i][j] > 0){
+                    edgeCount++;
+                }
+            }
+        }
+        list = new Edge[edgeCount];
+        int index = 0;
+        for (int i = 0; i < vertexCount; i++){
+            for (int j = 0; j < vertexCount; j++){
+                if (edges[i][j] > 0){
+                    list[index] = Edge(i, j, edges[i][j]);
+                    index++;
+                }
+            }
+        }
+        return list;
+    }
+
+    void Graph::prim() {
+        Path* paths = initializePaths(0);
+        Heap heap = Heap(vertexCount);
+        for (int i = 0; i < vertexCount; i++){
+            heap.insert(HeapNode(paths[i].getDistance(), i));
+        }
+        while (!heap.isEmpty()){
+            HeapNode node = heap.deleteMax();
+            int fromNode = node.getName();
+            for (int toNode = 0; toNode < vertexCount; toNode++){
+                if (paths[toNode].getDistance() > edges[fromNode][toNode]){
+                    int position = heap.search(toNode);
+                    heap.update(position, edges[fromNode][toNode]);
+                    paths[toNode].setDistance(edges[fromNode][toNode]);
+                    paths[toNode].setPrevious(fromNode);
+                }
+            }
+        }
+    }
+
 }

@@ -14,8 +14,6 @@ namespace list {
     class Graph : public AbstractGraph{
     private:
         EdgeList *edges;
-        void depthFirstSearch(bool* visited, int fromNode) override;
-        void breadthFirstSearch(bool* visited, int startNode) override;
     public:
         explicit Graph(int vertexCount);
         ~Graph();
@@ -24,6 +22,11 @@ namespace list {
         void connectedComponentsDisjointSet();
         Path* bellmanFord(int source);
         Path* dijkstra(int source);
+        void prim();
+    protected:
+        void depthFirstSearch(bool* visited, int fromNode) override;
+        void breadthFirstSearch(bool* visited, int startNode) override;
+        Edge* edgeList(int& edgeCount) override;
     };
 
 }

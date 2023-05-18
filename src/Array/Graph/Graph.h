@@ -20,6 +20,7 @@ namespace array{
         void connectedComponentDisjointSet();
         Path* bellmanFord(int source);
         Path* dijkstra(int source);
+        int** floydWarshall();
     protected:
         void depthFirstSearch(bool* visited, int fromNode) override;
         void breadthFirstSearch(bool* visited, int startNode) override;

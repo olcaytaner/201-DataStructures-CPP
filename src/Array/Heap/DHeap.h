@@ -9,13 +9,10 @@
 #include "Heap.h"
 
 class DHeap : public Heap{
-private:
+protected:
     int d;
 public:
     DHeap(int N, int d);
-protected:
-    void percolateDown(int no) override;
-    void percolateUp(int no) override;
 };
 
 

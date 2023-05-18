@@ -14,16 +14,16 @@ protected:
     int count;
     int N;
     void swapNode(int index1, int index2);
-    virtual void percolateDown(int no);
-    virtual void percolateUp(int no);
+    virtual void percolateDown(int no) = 0;
+    virtual void percolateUp(int no) = 0;
 public:
     explicit Heap(int N);
     ~Heap();
     bool isEmpty() const;
     bool isFull() const;
-    HeapNode deleteMax();
+    HeapNode deleteTop();
     void insert(HeapNode node);
-    void update(int k, int newValue);
+    virtual void update(int k, int newValue) = 0;
     int search(int name);
 };
 

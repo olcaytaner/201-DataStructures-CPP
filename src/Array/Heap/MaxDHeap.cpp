@@ -1,14 +1,10 @@
 //
-// Created by Olcay Taner YILDIZ on 25.04.2023.
+// Created by Olcay Taner YILDIZ on 18.05.2023.
 //
 
-#include "DHeap.h"
+#include "MaxDHeap.h"
 
-DHeap::DHeap(int N, int d) : Heap(N){
-    this->d = d;
-}
-
-void DHeap::percolateDown(int no) {
+void MaxDHeap::percolateDown(int no) {
     int child, largestChild;
     int value;
     do{
@@ -30,7 +26,7 @@ void DHeap::percolateDown(int no) {
     } while (true);
 }
 
-void DHeap::percolateUp(int no) {
+void MaxDHeap::percolateUp(int no) {
     int parent;
     parent = (no - 1) / d;
     while (parent >= 0 && array[parent].getData() < array[no].getData()){
@@ -38,4 +34,8 @@ void DHeap::percolateUp(int no) {
         no = parent;
         parent = (no - 1) / d;
     }
+}
+
+MaxDHeap::MaxDHeap(int N, int d) : DHeap(N, d) {
+
 }

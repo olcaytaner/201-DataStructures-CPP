@@ -5,7 +5,7 @@
 #include "Graph.h"
 #include "../../Array/DisjointSet.h"
 #include "../Queue.h"
-#include "../../Array/Heap.h"
+#include "../../Array/Heap/MinHeap.h"
 
 namespace list {
 
@@ -102,12 +102,12 @@ namespace list {
     Path *Graph::dijkstra(int source) {
         Edge* edge;
         Path* shortestPaths = initializePaths(source);
-        Heap heap = Heap(vertexCount);
+        MinHeap heap = MinHeap(vertexCount);
         for (int i = 0; i < vertexCount; i++){
             heap.insert(HeapNode(shortestPaths[i].getDistance(), i));
         }
         while (!heap.isEmpty()){
-            HeapNode node = heap.deleteMax();
+            HeapNode node = heap.deleteTop();
             int fromNode = node.getName();
             edge = edges[fromNode].getHead();
             while (edge != nullptr){
@@ -150,12 +150,12 @@ namespace list {
 
     void Graph::prim() {
         Path* paths = initializePaths(0);
-        Heap heap = Heap(vertexCount);
+        MinHeap heap = MinHeap(vertexCount);
         for (int i = 0; i < vertexCount; i++){
             heap.insert(HeapNode(paths[i].getDistance(), i));
         }
         while (!heap.isEmpty()){
-            HeapNode node = heap.deleteMax();
+            HeapNode node = heap.deleteTop();
             int fromNode = node.getName();
             Edge* edge = edges[fromNode].getHead();
             while (edge != nullptr){

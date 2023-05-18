@@ -5,7 +5,8 @@
 #include "Graph.h"
 #include "../DisjointSet.h"
 #include "../Queue.h"
-#include "../Heap.h"
+#include "../Heap/Heap.h"
+#include "../Heap/MinHeap.h"
 
 namespace array{
 
@@ -95,12 +96,12 @@ namespace array{
 
     Path *Graph::dijkstra(int source) {
         Path* shortestPaths = initializePaths(source);
-        Heap heap = Heap(vertexCount);
+        MinHeap heap = MinHeap(vertexCount);
         for (int i = 0; i < vertexCount; i++){
             heap.insert( HeapNode(shortestPaths[i].getDistance(), i));
         }
         while (!heap.isEmpty()){
-            HeapNode node = heap.deleteMax();
+            HeapNode node = heap.deleteTop();
             int fromNode = node.getName();
             for (int toNode = 0; toNode < vertexCount; toNode++){
                 int newDistance = shortestPaths[fromNode].getDistance() + edges[fromNode][toNode];
@@ -162,12 +163,12 @@ namespace array{
 
     void Graph::prim() {
         Path* paths = initializePaths(0);
-        Heap heap = Heap(vertexCount);
+        MinHeap heap = MinHeap(vertexCount);
         for (int i = 0; i < vertexCount; i++){
             heap.insert(HeapNode(paths[i].getDistance(), i));
         }
         while (!heap.isEmpty()){
-            HeapNode node = heap.deleteMax();
+            HeapNode node = heap.deleteTop();
             int fromNode = node.getName();
             for (int toNode = 0; toNode < vertexCount; toNode++){
                 if (paths[toNode].getDistance() > edges[fromNode][toNode]){

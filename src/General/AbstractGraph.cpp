@@ -24,9 +24,11 @@ int AbstractGraph::connectedComponentDfs() {
     int component = 0;
     bool* visited = new bool[vertexCount];
     for (int vertex = 0; vertex < vertexCount; vertex++){
-        visited[vertex] = true;
-        depthFirstSearch(visited, vertex);
-        component++;
+        if (!visited[vertex]){
+            visited[vertex] = true;
+            depthFirstSearch(visited, vertex);
+            component++;
+        }
     }
     delete[] visited;
     return component;
@@ -36,9 +38,11 @@ int AbstractGraph::connectedComponentBfs() {
     int component = 0;
     bool* visited = new bool[vertexCount];
     for (int vertex = 0; vertex < vertexCount; vertex++){
-        visited[vertex] = true;
-        breadthFirstSearch(visited, vertex);
-        component++;
+        if (!visited[vertex]){
+            visited[vertex] = true;
+            breadthFirstSearch(visited, vertex);
+            component++;
+        }
     }
     delete[] visited;
     return component;

@@ -14,7 +14,7 @@ void MergeSort::merge(int *A, int start, int middle, int end) {
         leftPart[i] = A[start + i];
     }
     for (int i = 0; i < rightCount; i++){
-        rightPart[i] = A[middle + i];
+        rightPart[i] = A[middle + i + 1];
     }
     leftPart[leftCount] = INT_MAX;
     rightPart[rightCount] = INT_MAX;

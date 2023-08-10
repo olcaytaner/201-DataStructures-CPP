@@ -10,7 +10,7 @@ LinkedList::LinkedList() {
 }
 
 void LinkedList::insertFirst(Node *newNode) {
-    if (tail == nullptr) {
+    if (isEmpty()) {
         tail = newNode;
     }
     newNode->setNext(head);
@@ -18,7 +18,7 @@ void LinkedList::insertFirst(Node *newNode) {
 }
 
 void LinkedList::insertLast(Node *newNode) {
-    if (head == nullptr) {
+    if (isEmpty()) {
         head = newNode;
     } else {
         tail->setNext(newNode);
@@ -88,7 +88,7 @@ string LinkedList::to_string() {
 void LinkedList::deleteFirst() {
     Node* tmp = head;
     head = head->getNext();
-    if (head == nullptr){
+    if (isEmpty()){
         tail = nullptr;
     }
     delete tmp;

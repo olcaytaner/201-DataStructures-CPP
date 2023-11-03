@@ -193,32 +193,25 @@ void Tree::deleteNode(int value) {
             x = x->getRight();
         }
     }
+    parent = getParent(x);
     while (true){
         if (x->getLeft() != nullptr){
             y = x->getLeft()->recursiveMaxSearch();
-            parent = x;
-            if (parent->getLeft() != y){
-                parent = parent->getLeft();
-                while (parent->getRight() != y){
-                    parent = parent->getRight();
-                }
-            }
+            parent = getParent(y);
         }
         if (y == nullptr && x->getRight() != nullptr){
             y = x->getRight()->recursiveMinSearch();
-            parent = x;
-            if (parent->getRight() != y){
-                parent = parent->getRight();
-                while (parent->getLeft() != y){
-                    parent = parent->getLeft();
-                }
-            }
+            parent = getParent(y);
         }
         if (y == nullptr){
-            if (parent->getLeft() == x){
-                parent->setLeft(nullptr);
+            if (parent == nullptr){
+                root = nullptr;
             } else {
-                parent->setRight(nullptr);
+                if (parent->getLeft() == x){
+                    parent->setLeft(nullptr);
+                } else {
+                    parent->setRight(nullptr);
+                }
             }
             break;
         }
@@ -226,4 +219,17 @@ void Tree::deleteNode(int value) {
         x = y;
         y = nullptr;
     }
+}
+
+TreeNode *Tree::getParent(TreeNode *node) {
+    TreeNode *x = root, *parent = nullptr;
+    while (x != node){
+        parent = x;
+        if (x->getData() > node->getData()){
+            x = x->getLeft();
+        } else {
+            x = x->getRight();
+        }
+    }
+    return parent;
 }

@@ -23,6 +23,7 @@ public:
     TreeNode* iterativeMaxSearch();
     TreeNode* recursiveMinSearch();
     TreeNode* recursiveMaxSearch();
+    void deleteNode(int value);
     void inorder();
     void preorder();
     void postorder();

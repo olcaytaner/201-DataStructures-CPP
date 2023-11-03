@@ -129,3 +129,7 @@ void TreeNode::recursiveInsert(TreeNode *node) {
         }
     }
 }
+
+void TreeNode::setData(int data) {
+    this->data = data;
+}

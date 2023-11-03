@@ -182,3 +182,48 @@ void Tree::insertChild(TreeNode *parent, TreeNode *child) {
         }
     }
 }
+
+void Tree::deleteNode(int value) {
+    TreeNode *y = nullptr, *x = root, *parent = nullptr;
+    while (x->getData() != value){
+        parent = x;
+        if (x->getData() > value){
+            x = x->getLeft();
+        } else {
+            x = x->getRight();
+        }
+    }
+    while (true){
+        if (x->getLeft() != nullptr){
+            y = x->getLeft()->recursiveMaxSearch();
+            parent = x;
+            if (parent->getLeft() != y){
+                parent = parent->getLeft();
+                while (parent->getRight() != y){
+                    parent = parent->getRight();
+                }
+            }
+        }
+        if (y == nullptr && x->getRight() != nullptr){
+            y = x->getRight()->recursiveMinSearch();
+            parent = x;
+            if (parent->getRight() != y){
+                parent = parent->getRight();
+                while (parent->getLeft() != y){
+                    parent = parent->getLeft();
+                }
+            }
+        }
+        if (y == nullptr){
+            if (parent->getLeft() == x){
+                parent->setLeft(nullptr);
+            } else {
+                parent->setRight(nullptr);
+            }
+            break;
+        }
+        x->setData(y->getData());
+        x = y;
+        y = nullptr;
+    }
+}

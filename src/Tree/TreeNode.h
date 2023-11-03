@@ -15,6 +15,7 @@ public:
     TreeNode(int data);
     ~TreeNode();
     int getData() const;
+    void setData(int data);
     TreeNode* getLeft() const;
     TreeNode* getRight() const;
     void setLeft(TreeNode* _left);

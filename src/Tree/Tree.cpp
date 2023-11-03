@@ -12,7 +12,7 @@ Tree::Tree() {
     root = nullptr;
 }
 
-TreeNode *Tree::getRoot() const{
+TreeNode *Tree::getRoot() const {
     return root;
 }
 
@@ -25,7 +25,7 @@ Tree::~Tree() {
 }
 
 TreeNode *Tree::recursiveSearch(int value) {
-    if (root != nullptr){
+    if (root != nullptr) {
         return root->recursiveSearch(value);
     } else {
         return nullptr;
@@ -34,11 +34,11 @@ TreeNode *Tree::recursiveSearch(int value) {
 
 TreeNode *Tree::iterativeSearch(int value) {
     TreeNode *tmp = root;
-    while (tmp != nullptr){
-        if (value < tmp->getData()){
+    while (tmp != nullptr) {
+        if (value < tmp->getData()) {
             tmp = tmp->getLeft();
         } else {
-            if (value > tmp->getData()){
+            if (value > tmp->getData()) {
                 tmp = tmp->getRight();
             } else {
                 return tmp;
@@ -49,8 +49,8 @@ TreeNode *Tree::iterativeSearch(int value) {
 }
 
 TreeNode *Tree::iterativeMinSearch() {
-    TreeNode* tmp = root;
-    TreeNode* parent = nullptr;
+    TreeNode *tmp = root;
+    TreeNode *parent = nullptr;
     while (tmp != nullptr) {
         parent = tmp;
         tmp = tmp->getLeft();
@@ -59,9 +59,9 @@ TreeNode *Tree::iterativeMinSearch() {
 }
 
 TreeNode *Tree::iterativeMaxSearch() {
-    TreeNode* tmp = root;
+    TreeNode *tmp = root;
     while (tmp != nullptr) {
-        if (tmp->getRight() == nullptr){
+        if (tmp->getRight() == nullptr) {
             return tmp;
         }
         tmp = tmp->getRight();
@@ -70,33 +70,33 @@ TreeNode *Tree::iterativeMaxSearch() {
 }
 
 TreeNode *Tree::recursiveMinSearch() {
-    if (root != nullptr){
+    if (root != nullptr) {
         return root->recursiveMinSearch();
     }
     return nullptr;
 }
 
 TreeNode *Tree::recursiveMaxSearch() {
-    if (root != nullptr){
+    if (root != nullptr) {
         return root->recursiveMaxSearch();
     }
     return nullptr;
 }
 
 void Tree::inorder() {
-    if (root != nullptr){
+    if (root != nullptr) {
         root->inorder();
     }
 }
 
 void Tree::preorder() {
-    if (root != nullptr){
+    if (root != nullptr) {
         root->preorder();
     }
 }
 
 void Tree::postorder() {
-    if (root != nullptr){
+    if (root != nullptr) {
         root->postorder();
     }
 }
@@ -106,7 +106,7 @@ void Tree::iterativeInsert(TreeNode *node) {
     TreeNode *tmp = root;
     while (tmp != nullptr) {
         parent = tmp;
-        if (node->getData() < tmp->getData()){
+        if (node->getData() < tmp->getData()) {
             tmp = tmp->getLeft();
         } else {
             tmp = tmp->getRight();
@@ -116,13 +116,13 @@ void Tree::iterativeInsert(TreeNode *node) {
 }
 
 void Tree::prettyPrint() {
-    if (root != nullptr){
+    if (root != nullptr) {
         root->prettyPrint(0);
     }
 }
 
 void Tree::recursiveInsert(TreeNode *node) {
-    if (root == nullptr){
+    if (root == nullptr) {
         root = node;
     } else {
         root->recursiveInsert(node);
@@ -130,20 +130,20 @@ void Tree::recursiveInsert(TreeNode *node) {
 }
 
 int Tree::nodeCountWithStack() {
-    TreeNode* tmp;
+    TreeNode *tmp;
     int count = 0;
     Stack c = Stack(100);
-    if (root != nullptr){
+    if (root != nullptr) {
         c.push(Element(root));
     }
-    while (!c.isEmpty()){
+    while (!c.isEmpty()) {
         Element e = c.pop();
         count++;
         tmp = e.getData();
-        if (tmp->getLeft() != nullptr){
-            c.push( Element(tmp->getLeft()));
+        if (tmp->getLeft() != nullptr) {
+            c.push(Element(tmp->getLeft()));
         }
-        if (tmp->getRight() != nullptr){
+        if (tmp->getRight() != nullptr) {
             c.push(Element(tmp->getRight()));
         }
     }
@@ -151,20 +151,20 @@ int Tree::nodeCountWithStack() {
 }
 
 int Tree::nodeCountWithQueue() {
-    TreeNode* tmp;
+    TreeNode *tmp;
     int count = 0;
     Queue c = Queue(100);
-    if (root != nullptr){
+    if (root != nullptr) {
         c.enqueue(Element(root));
     }
-    while (!c.isEmpty()){
+    while (!c.isEmpty()) {
         Element e = c.dequeue();
         count++;
         tmp = e.getData();
-        if (tmp->getLeft() != nullptr){
+        if (tmp->getLeft() != nullptr) {
             c.enqueue(Element(tmp->getLeft()));
         }
-        if (tmp->getRight() != nullptr){
+        if (tmp->getRight() != nullptr) {
             c.enqueue(Element(tmp->getRight()));
         }
     }
@@ -184,48 +184,47 @@ void Tree::insertChild(TreeNode *parent, TreeNode *child) {
 }
 
 void Tree::deleteNode(int value) {
-    TreeNode *y = nullptr, *x = root, *parent = nullptr;
-    while (x->getData() != value){
+    TreeNode *y, *x = root, *parent;
+    while (x->getData() != value) {
         parent = x;
-        if (x->getData() > value){
+        if (x->getData() > value) {
             x = x->getLeft();
         } else {
             x = x->getRight();
         }
     }
     parent = getParent(x);
-    while (true){
-        if (x->getLeft() != nullptr){
+    while (true) {
+        if (x->getLeft() != nullptr) {
             y = x->getLeft()->recursiveMaxSearch();
             parent = getParent(y);
-        }
-        if (y == nullptr && x->getRight() != nullptr){
-            y = x->getRight()->recursiveMinSearch();
-            parent = getParent(y);
-        }
-        if (y == nullptr){
-            if (parent == nullptr){
-                root = nullptr;
+        } else {
+            if (x->getRight() != nullptr) {
+                y = x->getRight()->recursiveMinSearch();
+                parent = getParent(y);
             } else {
-                if (parent->getLeft() == x){
-                    parent->setLeft(nullptr);
+                if (parent == nullptr) {
+                    root = nullptr;
                 } else {
-                    parent->setRight(nullptr);
+                    if (parent->getLeft() == x) {
+                        parent->setLeft(nullptr);
+                    } else {
+                        parent->setRight(nullptr);
+                    }
                 }
+                break;
             }
-            break;
         }
         x->setData(y->getData());
         x = y;
-        y = nullptr;
     }
 }
 
 TreeNode *Tree::getParent(TreeNode *node) {
     TreeNode *x = root, *parent = nullptr;
-    while (x != node){
+    while (x != node) {
         parent = x;
-        if (x->getData() > node->getData()){
+        if (x->getData() > node->getData()) {
             x = x->getLeft();
         } else {
             x = x->getRight();
